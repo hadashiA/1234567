@@ -1,0 +1,34 @@
+{
+  "name": "fmushi",
+  "version": "2.0.0",
+  "description": "http://fmushi.com",
+  "engines": {
+    "iojs": "2.2.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funamushi/fmushi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funamushi/fmushi/issues"
+  },
+  "homepage": "https://github.com/funamushi/fmushi#readme",
+  "dependencies": {
+    "browserify": "^10.2.4",
+    "koa": "^0.21.0",
+    "koa-hbs": "^0.7.0",
+    "koa-static": "^1.4.9",
+    "processing-js": "^1.4.13",
+    "rx": "^2.5.3"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "watchify": "^3.2.2"
+  }
+}
