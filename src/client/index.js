@@ -2,6 +2,9 @@
 
 // import Rx from 'rx';
 import 'processing-js';
+import Circle from './lib/circle';
+import world from './lib/world';
+console.log(world);
 
 (function(callback) {
   if (document.readyState != 'loading'){
@@ -21,29 +24,33 @@ function drawPoint(p, x, y, noiseFactor) {
 function sketch(p) {
   window.p = p;
 
-  const h = 300;
-  const w = 300;
+  let circles = [];
+  for (let i = 0; i < 10; i++) {
+    let x = p.random(world.w);
+    let y = p.random(world.h);
+    let r = p.random(100) + 10;
+    let circle = new Circle(r, x, y);
+
+    circle.moveX       = p.random(10) - 5;
+    circle.moveY       = p.random(10) - 5;
+    circle.strokeColor = p.color(p.random(255), p.random(255), p.random(255));
+    circle.fillColor   = p.color(p.random(255), p.random(255), p.random(255));
+    circle.alpha       = p.random(255);
+    circles.push(circle);
+  }
   
   p.setup = () => {
-    p.size(w, h);
+    p.size(world.w, world.h);
     p.smooth();
-    p.background(255);
-    const xStart = p.random(10);
-    let xNoise = xStart;
-    let yNoise = p.random(10);
-
-    for (let y = 0; y <= h; y += 5) {
-      yNoise += 0.1;
-      
-      xNoise = xStart;
-      for (let x = 0; x <= w; x += 5) {
-        xNoise += 0.1;
-
-        drawPoint(p, x, y, p.noise(xNoise, yNoise));
-      }
-    }
+    p.frameRate(24);
   };
   
   p.draw = () => {
+    p.background(255);
+
+    for (let circle of circles) {
+      circle.update();
+      circle.draw(p);
+    }
   };
 }
