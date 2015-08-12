@@ -4,7 +4,7 @@
 import 'processing-js';
 import Circle from './lib/circle';
 import world from './lib/world';
-console.log(world);
+import Color from './lib/color';
 
 (function(callback) {
   if (document.readyState != 'loading'){
@@ -33,8 +33,8 @@ function sketch(p) {
 
     circle.moveX       = p.random(10) - 5;
     circle.moveY       = p.random(10) - 5;
-    circle.strokeColor = p.color(p.random(255), p.random(255), p.random(255));
-    circle.fillColor   = p.color(p.random(255), p.random(255), p.random(255));
+    circle.strokeColor = new Color(p.random(255), p.random(255), p.random(255));
+    // circle.fillColor   = new Color(p.random(255), p.random(255), p.random(255));
     circle.alpha       = p.random(255);
     circles.push(circle);
   }
@@ -49,6 +49,24 @@ function sketch(p) {
     p.background(255);
 
     for (let circle of circles) {
+      for (let otherCircle of circles) {
+        if (otherCircle === circle) {
+          continue;
+        }
+
+        const distanceSquare =  Math.pow(otherCircle.x - circle.x, 2) + Math.pow(otherCircle.y - circle.y, 2);
+        const distance = Math.pow(distanceSquare, 0.5);
+        const overlap = distance - circle.r - otherCircle.r;
+        
+        if (overlap < 0) {
+          const midX = (circle.x + otherCircle.x) * 0.5;
+          const midY = (circle.x + otherCircle.y) * 0.5;
+          p.stroke(0, 100);
+          p.noFill();
+          p.ellipse(midX, midY, -overlap, -overlap);
+        }
+      }
+
       circle.update();
       circle.draw(p);
     }

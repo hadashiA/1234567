@@ -33,18 +33,37 @@ export default class Circle {
 
   draw(processing) {
     if (this.strokeColor) {
-      processing.stroke(this.strokeColor);
+      let {r, g, b} = this.strokeColor;
+      processing.stroke(r, g, b, this.alpha);
     } else {
       processing.noStroke();
     }
 
     if (this.fillColor) {
-      processing.fill(this.fillColor);
+      let {r, g, b} = this.fillColor;
+      processing.fill(r, g, b, this.alpha);
     } else {
       processing.noFill();
     }
 
     processing.ellipse(this.x, this.y, this.r, this.r);
+    // processing.textSize(24);
+    // processing.text('よさそう', this.x, this.y);
+  }
+
+  distanceSquareTo(x, y) {
+    
+  }
+
+  distanceTo(circle) {
+  }
+
+  contactFor(circle) {
+    if (this === circle) {
+      return false;
+    }
+    let distanceSquare = Math.pow(circle.x - this.x, 2) + Math.pow(circle.y - this.y, 2);
+    return distanceSquare <= Math.pow(this.r, 2);
   }
 };
 
