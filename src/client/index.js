@@ -25,7 +25,7 @@ function sketch(p) {
   window.p = p;
 
   let circles = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 4; i++) {
     let x = p.random(world.w);
     let y = p.random(world.h);
     let r = p.random(100) + 10;
@@ -40,7 +40,7 @@ function sketch(p) {
   }
   
   p.setup = () => {
-    p.size(world.w, world.h);
+    p.size(world.w, world.h, p.OPENGL);
     p.smooth();
     p.frameRate(24);
   };
@@ -61,9 +61,13 @@ function sketch(p) {
         if (overlap < 0) {
           const midX = (circle.x + otherCircle.x) * 0.5;
           const midY = (circle.x + otherCircle.y) * 0.5;
-          p.stroke(0, 100);
-          p.noFill();
-          p.ellipse(midX, midY, -overlap, -overlap);
+
+          p.stroke(0);
+          p.fill(0);
+          // p.noFill();
+          // p.ellipse(midX, midY, -overlap, -overlap);
+          p.textSize(-overlap);
+          p.text('よさそう', midX, midY);
         }
       }
 

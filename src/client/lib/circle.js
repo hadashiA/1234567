@@ -51,13 +51,6 @@ export default class Circle {
     // processing.text('よさそう', this.x, this.y);
   }
 
-  distanceSquareTo(x, y) {
-    
-  }
-
-  distanceTo(circle) {
-  }
-
   contactFor(circle) {
     if (this === circle) {
       return false;
