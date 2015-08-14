@@ -65,7 +65,6 @@ export default class CellMatrix {
         let y = row * length;
         // p.ellipse(x, y, length, length);
         p.textSize(length);
-
         switch ((col + row) % 4) {
         case 0:
           p.text('よ', x, y);

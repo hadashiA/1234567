@@ -1,6 +1,6 @@
 const world = {
-  w: 300,
-  h: 300
+  w: 700,
+  h: 700
 };
 
 export default world;

@@ -12,12 +12,11 @@ import yanagi from './sketches/yanagi';
     document.addEventListener('DOMContentLoaded', callback);
   }
 })(function() {
-  const sketches = {
+  const sketch = {
     ca:     ca,
     circle: circle,
     yanagi: yanagi
-  };
-  const name = location.pathname.split('/')[1];
-
-  window.processing = new Processing('stage', sketches[name] || function(){});
+  }[location.pathname.split('/')[1]];
+  
+  window.processing = new Processing('stage', sketch || ca);
 });
