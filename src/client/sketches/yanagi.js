@@ -1,14 +1,13 @@
-
 function drawPoint(p, x, y, noiseFactor) {
   // const len = 10 * noiseFactor;
   // p.rect(x, y, len, len);
   p.pushMatrix();
   p.translate(x, y);
-  p.rotate(noiseFactor * p.radians(540));
+  p.rotate(noiseFactor * p.radians(680));
   
   let edgeSize = noiseFactor * 35;
-  let grey     = 150 + noiseFactor * 120;
-  let alpha    = 150 + noiseFactor * 120;
+  let grey     = 0 + noiseFactor * 120;
+  let alpha    = 10 + noiseFactor * 120;
   // p.noStroke();
   p.fill(grey, alpha);
   p.textSize(24);
@@ -17,7 +16,7 @@ function drawPoint(p, x, y, noiseFactor) {
   p.popMatrix();
 }
 
-function sketch(p) {
+export default function sketch(p) {
   window.p = p;
 
   const h = 300;
@@ -45,9 +44,9 @@ function sketch(p) {
     let xNoise = xStart;
     let yNoise = yStart;
 
-    p.background(0);
+    p.background(255);
 
-    for (let y = 0; y <= h; y += 30) {
+    for (let y = 0; y <= h; y += 60) {
       yNoise += 0.1;
       
       xNoise = xStart;
