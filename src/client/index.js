@@ -2,6 +2,8 @@
 
 import 'processing-js';
 import ca from './sketches/ca';
+import circle from './sketches/collision-circle';
+import yanagi from './sketches/yanagi';
 
 (function(callback) {
   if (document.readyState != 'loading'){
@@ -10,13 +12,12 @@ import ca from './sketches/ca';
     document.addEventListener('DOMContentLoaded', callback);
   }
 })(function() {
+  const sketches = {
+    ca:     ca,
+    circle: circle,
+    yanagi: yanagi
+  };
   const name = location.pathname.split('/')[1];
-  let sketch = function(){};
 
-  switch (name) {
-  case 'ca':
-    sketch = ca;
-    break;
-  }
-  window.processing = new Processing('stage', sketch);
+  window.processing = new Processing('stage', sketches[name] || function(){});
 });
