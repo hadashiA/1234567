@@ -12,7 +12,7 @@ app.use(hbs.middleware({
 }));
 
 app.use(function *() {
-  yield this.render('index', { 'title': 'F虫' });
+  yield this.render('index', { title: '1234567' });
 });
 
 app.listen(3000);

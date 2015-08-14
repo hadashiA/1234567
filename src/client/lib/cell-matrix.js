@@ -61,7 +61,25 @@ export default class CellMatrix {
         } else {
           p.fill(255);
         }
-        p.ellipse(col * length, row * length, length, length);
+        let x = col * length;
+        let y = row * length;
+        // p.ellipse(x, y, length, length);
+        p.textSize(length);
+
+        switch ((col + row) % 4) {
+        case 0:
+          p.text('よ', x, y);
+          break;
+        case 1:
+          p.text('さ', x, y);
+          break;
+        case 2:
+          p.text('そ', x, y);
+          break;
+        case 3:
+          p.text('う', x, y);
+          break;
+        }
       }
     }
   }
