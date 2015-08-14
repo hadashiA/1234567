@@ -1,6 +1,5 @@
 'use strict';
 
-// import Rx from 'rx';
 import 'processing-js';
 import ca from './sketches/ca';
 
