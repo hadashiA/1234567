@@ -1,9 +1,7 @@
 'use strict';
 
 import 'processing-js';
-import ca from './sketches/ca';
-import circle from './sketches/collision-circle';
-import yanagi from './sketches/yanagi';
+import sketches from './lib/sketches';
 
 (function(callback) {
   if (document.readyState != 'loading'){
@@ -12,11 +10,29 @@ import yanagi from './sketches/yanagi';
     document.addEventListener('DOMContentLoaded', callback);
   }
 })(function() {
-  const sketch = {
-    ca:     ca,
-    circle: circle,
-    yanagi: yanagi
-  }[location.pathname.split('/')[1]];
-  
-  window.processing = new Processing('stage', sketch || ca);
+  const sketch = sketches[location.pathname.split('/')[1]];
+  if (sketch) {
+    let canvas = document.createElement('canvas');
+    document.body.appendChild(canvas);
+    window.processing = new Processing(canvas, sketch);
+
+  } else {
+    for (let name of Object.keys(sketches)) {
+      let canvas = document.createElement('canvas');
+      document.body.appendChild(canvas);
+      let processing = new Processing(canvas, sketches[name]);
+
+      setTimeout(() => {
+        processing.noLoop();
+      }, 100);
+
+      canvas.addEventListener('mouseenter', (e) => {
+        processing.loop();
+      }, false);
+
+      canvas.addEventListener('mouseleave', (e) => {
+        processing.noLoop();
+      }, false);
+    }
+  }
 });

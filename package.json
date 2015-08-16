@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "http://fmushi.com",
   "engines": {
-    "iojs": "2.2.1"
+    "iojs": "3.0.0"
   },
   "main": "index.js",
   "scripts": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/funamushi/fmushi.git"
+    "url": "git+https://github.com/hadashiA/1234567.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/funamushi/fmushi/issues"
+    "url": "https://github.com/hadashiA/1234567/issues"
   },
-  "homepage": "https://github.com/funamushi/fmushi#readme",
+  "homepage": "https://github.com/hadashiA/1234567#readme",
   "dependencies": {
     "browserify": "^10.2.4",
     "koa": "^0.21.0",

@@ -58,7 +58,8 @@ function brian() {
 export default class Cell {
   constructor(calculator) {
     this.state = Math.floor(Math.random() * 3);
-    this.neighbours = [];    this.calculator = (calculator || brian);
+    this.neighbours = [];
+    this.calculator = (calculator || gol);
   }
 
   get on() {

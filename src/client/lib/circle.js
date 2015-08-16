@@ -46,9 +46,9 @@ export default class Circle {
       processing.noFill();
     }
 
-    processing.ellipse(this.x, this.y, this.r, this.r);
-    // processing.textSize(24);
-    // processing.text('よさそう', this.x, this.y);
+    // processing.ellipse(this.x, this.y, this.r, this.r);
+    processing.textSize(24);
+    processing.text('よさそう', this.x, this.y);
   }
 
   contactFor(circle) {

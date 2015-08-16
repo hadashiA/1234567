@@ -1,5 +1,5 @@
-import world from '../lib/world';
-import CellMatrix from '../lib/cell-matrix';
+import world from '../world';
+import CellMatrix from '../cell-matrix';
 
 export default function sketch(p) {
   const cellSize = 30;
@@ -12,7 +12,7 @@ export default function sketch(p) {
     p.smooth();
     p.frameRate(24);
   };
-  
+
   p.draw = () => {
     p.background(255);
 

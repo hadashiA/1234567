@@ -1,10 +1,10 @@
-import Circle from '../lib/circle';
-import world from '../lib/world';
-import Color from '../lib/color';
+import Circle from '../circle';
+import world from '../world';
+import Color from '../color';
 
 export default function sketch(p) {
   let circles = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 30; i++) {
     let x = p.random(world.w);
     let y = p.random(world.h);
     let r = p.random(100) + 10;
@@ -23,7 +23,7 @@ export default function sketch(p) {
     p.smooth();
     p.frameRate(24);
   };
-  
+
   p.draw = () => {
     p.background(255);
 
@@ -41,12 +41,12 @@ export default function sketch(p) {
           const midX = (circle.x + otherCircle.x) * 0.5;
           const midY = (circle.x + otherCircle.y) * 0.5;
 
-          p.stroke(0);
+          p.stroke(0, 100);
           p.fill(0);
-          // p.noFill();
-          // p.ellipse(midX, midY, -overlap, -overlap);
-          p.textSize(-overlap);
-          p.text('よさそう', midX, midY);
+          p.noFill();
+          p.ellipse(midX, midY, -overlap, -overlap);
+          // p.textSize(-overlap);
+          // p.text('よさそう', midX, midY);
         }
       }
 

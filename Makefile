@@ -8,9 +8,6 @@ SRC = $(ENTRY)
 ifneq ($(wildcard src/client/lib),)
   SRC += $(shell find src/client/lib -type f -name '*.js')
 endif
-ifneq ($(wildcard src/client/sketches),)
-  SRC += $(shell find src/client/sketches -type f -name '*.js')
-endif
 
 .PHONY: all clean info
 
